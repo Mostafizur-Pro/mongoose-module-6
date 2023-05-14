@@ -27,28 +27,4 @@ const userSchema = new Schema<IUser>({
 // step3: model
 const User = model<IUser>("User", userSchema)
 
-// async function run() {
- const createUserToDB =async () => {
-    
- 
-const user = new User(
-    {
-        id: '444',
-        role: 'student',
-        password: 'Jhakanaka',
-        name: {
-            firstName: "Mostaafizur",
-            middleName: 'Rahman',
-            lastname: 'Sohan',
-        },        
-        gender: "male" ,
-        email: 'abc@ph.com',
-        contactNo: '01731113169',
-        emergencyContactNo: '01950165017',
-        presentAddress: 'Uganda',
-        permanentAddress: 'USA',
-    })
-    await user.save();
-    console.log(user);
-    
-}
+export default User

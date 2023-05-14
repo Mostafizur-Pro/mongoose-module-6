@@ -1,6 +1,9 @@
-import express, { Application, NextFunction, Request, Response } from 'express'
+import express, { Application } from 'express'
 import cors from 'cors'
-import { model, Schema } from 'mongoose'
+
+// Application Routes
+import userRoutes from './app/modules/user/user.route'
+
 
 const app:Application = express()
 
@@ -11,32 +14,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    /*
-    Inserting a test data into mongodb
-    Step1: Interface
-    Step2: Schema
-    Step3: Model
-    Step4: Database Quesry
-    */
-
-
-
-
-createUserToDB()
-    // res.send('Hello World!')
-    // next()
-  })
+// app.get('/api/v1/user', userRoutes)  wrong process
+app.use('/api/v1/user', userRoutes)
 
   export default app
-
-
-
-  /*
-interface     =>    interface.ts
-Schema, model =>    model.ts
-
-route
-route function => controller.ts
-Database query function => service
-  */
