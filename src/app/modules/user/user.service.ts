@@ -5,9 +5,9 @@ import User from "./user.model";
     export const createUserToDB = async (payload: IUser): Promise<IUser> => {
         // creating a new user
         const user = new User(payload); //User -> class  user -> instance
-        await user.save();
-        // console.log(user.fullName());
-      
+        await user.save();  // built in intance methods 
+                            // nije ja create korbo tai custom intance
+           
         return user;
       };
 
@@ -15,22 +15,7 @@ import User from "./user.model";
         const users = await User.find();
         return users;
       };
-
-         //  const user = await new User(
-            // {
-            //     id: '678',
-            //     role: 'student',
-            //     password: 'Jhakanaka',
-            //     name: {
-            //         firstName: "Mostaafizur",
-            //         middleName: 'Rahman',
-            //         lastname: 'Sohan',
-            //     },    
-                 
-            //     gender: "male" ,
-            //     email: 'abc@ph.com',
-            //     contactNo: '01731113169',
-            //     emergencyContactNo: '01950165017',
-            //     presentAddress: 'Uganda',
-            //     permanentAddress: 'USA',
-            // })
+export const getUserByIdFromDB =async (payload:string):Promise<IUser|null> => {
+  const user = await User.findOne({id: payload},{name:1, contactNo:1 })
+  return user
+}
