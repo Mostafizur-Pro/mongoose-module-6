@@ -7,7 +7,7 @@ import User from "./user.model";
         const user = new User(payload); //User -> class  user -> instance
         await user.save();  // built in intance methods 
                             // nije ja create korbo tai custom intance
-           
+          //  user.fullName()  // custom instance method create
         return user;
       };
 
